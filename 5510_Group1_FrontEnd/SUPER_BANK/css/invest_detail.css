@@ -1,0 +1,158 @@
+html,
+body,
+.mui-content{
+	background-color: #FFF;
+}
+.stock-top {
+	padding: 10px;
+}
+.stock-top>div {
+	background-color: #8bb769;
+	padding: 10px 5px;
+	border-radius: 10px;
+}
+.stock-top>div p{
+	color: #FFF;
+	margin: 0;
+}
+.stock-tools {
+	border-bottom: 1px solid #eee;
+	color: #ccc;
+}
+.mui-table-view:before,
+.mui-table-view:after  {
+    height: 0px;
+}
+.mui-col-xs-2 {
+    line-height: 30px;
+}
+.stock-entry img {
+	width:40px;
+}
+.stock-account-top {
+	margin: 10px 0;
+}
+.stock-name {
+	font-size: 14px;
+	color: #333;
+}
+.col-white{
+	color: white;
+}
+.col-red{
+	color: red;
+}
+.col-green{
+	color: green;
+}
+.col-yellow {
+	color: #f0ad4e;
+}
+.hold-item ul{
+	padding: 0px 5px;
+	margin-bottom: 15px;
+	line-height: 24px;
+}
+.hold-item li{
+	display: inline-block;
+	width: 33%;
+	font-size: 12px;
+	padding: 0px;
+	/* margin-right: 20px; */
+}
+.stock-code{
+	color: #aaa;
+	font-size: 12px;
+	margin-left: 15px;
+}
+.stock-label{
+	color: #aaa;
+	margin-right: 10px;
+}
+.stock-detail-bar .mui-bar-tab .mui-tab-item {
+	display: inline-block;
+	overflow: hidden;
+	width: 50%;
+	height: 50px;
+	text-align: center;
+	vertical-align: middle;
+	white-space: unset;
+	text-overflow: unset;
+	color: #929292;
+	padding: 5px 0px;
+	border-right: 1px solid #efefef;
+}
+.stock-detail-bar .mui-tab-label{
+	line-height: 40px;
+	font-size: 16px;
+}
+#buy_dialog,
+#sell_dialog {
+	padding: 10px;
+	border: 1px solid #ccc;
+	position: fixed;
+	bottom: 0px;
+	z-index: 999;
+}
+#buy_dialog input,
+#sell_dialog input {
+	border: none;
+	margin: 0;
+}
+#buy_dialog .mui-col-xs-7,
+#sell_dialog .mui-col-xs-7{
+	line-height: 40px;
+}
+#buy_dialog,
+#sell_dialog {
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+}
+.mui-input-row .mui-col-xs-3 {
+	font-size: 9px;
+	color: #aaa;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	height: 35px;
+	line-height: 15px;
+}
+.mui-input-row label~input, 
+.mui-input-row label~select, 
+.mui-input-row label~textarea, 
+.mui-input-row label~button {
+    float: right;
+    width: 65%;
+    margin-bottom: 0;
+    padding-left: 0;
+    border: 0;
+}
+.mui-input-row label~button.mui-btn {
+    width: 65% !important;
+		text-align: left;
+		padding: 15px 0;
+}
+input[type=number].mui-col-xs-6{
+	width: 50%;
+	text-align: center;
+}
+.mui-table-view-cell:after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 15px;
+    height: 0px;
+    content: '';
+    -webkit-transform: scaleY(.5);
+    transform: scaleY(.5);
+    background-color: #c8c7cc;
+}
+.show-preset {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}

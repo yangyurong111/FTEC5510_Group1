@@ -1,0 +1,58 @@
+.stock-tools .mui-col-xs-6 {
+	line-height: 34px;
+	text-align: center;
+}
+.stock-tools .mui-col-xs-6 .mui-btn-block {
+	float: right;
+	width: 80%;
+  border: 1px solid #eee;
+}
+.stock-tools .mui-col-xs-6 h5 {
+	float: left;
+	width: 19%;
+}
+.mui-table-view-cell {
+  border-bottom: 1px solid #eee;
+	padding: 11px 0px;
+}
+.mui-content {
+    background-color: #fff;
+}
+.col-red{
+	color: red;
+}
+.col-green{
+	color: green;
+}
+.col-yellow {
+	color: #f0ad4e;
+}
+.col-grey {
+	color: grey;
+}
+.stock-tools,
+.stock-item h5,
+.stock-item a{
+	font-size: 12px;
+}
+#order_list a.mui-btn {
+	padding: 5px;
+	width: 100%;
+	margin: 5px 0;
+}
+.mui-row.stock-tools {
+	padding: 5px 0px;
+	border-bottom: 1px solid #eee;
+}
+.mui-row.stock-tools .mui-col-xs-3,
+.mui-row.stock-tools .mui-col-xs-2 {
+  line-height: 34px;
+}
+.show-preset {
+	position: absolute;
+	right: 0px;
+	top: 15px;
+	width: 50px;
+	height: 26px;
+	line-height: 26px;
+}

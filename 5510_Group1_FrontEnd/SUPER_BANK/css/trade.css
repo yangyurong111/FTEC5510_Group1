@@ -1,0 +1,186 @@
+html,
+body,
+.mui-content{
+	background-color: #FFF;
+}
+.mui-slider-progress-bar {
+	width: 25%;
+}
+.mui-numbox {
+  width: 100%;
+}
+.mui-input-row {
+  padding: 2px 10px;
+}
+.mui-input-group:before,
+.mui-input-group:after,
+.mui-input-group .mui-input-row:after{
+    height: 0px;
+}
+.mui-slider .mui-segmented-control.mui-segmented-control-inverted~.mui-slider-group .mui-slider-item {
+    border-top: none;
+    border-bottom: none;
+}
+.mui-scroll {
+    /* transform: none !important; */
+		padding: 10px 5px;
+}
+#sliderSegmentedControl {
+	background-color: #FFF;
+}
+.mui-scroll-wrapper,
+.mui-scroll{
+    /* position: relative; */
+}
+input[type=number].mui-col-xs-6{
+	width: 50%;
+	text-align: center;
+}
+.mui-input-row .mui-col-xs-3 {
+	font-size: 9px;
+	color: #aaa;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	height: 35px;
+	line-height: 15px;
+}
+.mui-button-row>div{
+  margin: 0;
+  padding: 6px 0px;
+}
+#sliderSegmentedControl .mui-control-item{
+	width:20%;
+}
+#item3mobile .mui-table-view .mui-text-right,
+#item4mobile .mui-table-view .mui-text-right {
+  /* line-height: 52px; */
+}
+#item3mobile .stock-tools,
+#item4mobile .stock-tools {
+	font-size: 12px;
+	padding: 10px 0;
+	border-bottom: 1px solid #eee;
+}
+#item3mobile .stock-tools .mui-col-xs-6,
+#item4mobile .stock-tools .mui-col-xs-6 {
+	line-height: 34px;
+}
+#item3mobile .stock-tools .mui-col-xs-6 .mui-btn-block,
+#item4mobile .stock-tools .mui-col-xs-6 .mui-btn-block {
+	float: right;
+	width: 80%;
+}
+#item3mobile .stock-tools .mui-col-xs-6 h5,
+#item4mobile .stock-tools .mui-col-xs-6 h5 {
+	float: left;
+	width: 19%;
+}
+#item4mobile .mui-table-view-cell,
+#item3mobile .mui-table-view-cell,
+#item5mobile>.mui-scroll-wrapper>.mui-scroll>.mui-table-view>li.mui-table-view-cell {
+  border-bottom: 1px solid #eee;
+	padding: 11px 0px;
+}
+.col-red{
+	color: red;
+}
+.col-green{
+	color: green;
+}
+.col-yellow {
+	color: #f0ad4e;
+}
+.col-grey {
+	color: grey;
+}
+.hold-item ul{
+	padding-top: 10px;
+}
+.hold-item li{
+	display: inline-block;
+	width:48%;
+	font-size: 12px;
+	padding: 0px;
+}
+.stock-code{
+	color: #aaa;
+	font-size: 12px;
+	margin-left: 15px;
+}
+.stock-label{
+	color: #aaa;
+	margin-right: 15px;
+}
+
+.stock-tools .mui-col-xs-6 {
+	line-height: 34px;
+	text-align: center;
+}
+.stock-tools .mui-col-xs-6 .mui-btn-block {
+	float: right;
+	width: 80%;
+  border: 1px solid #eee;
+}
+.stock-tools .mui-col-xs-6 h5 {
+	float: left;
+	width: 19%;
+}
+#item3mobile .mui-table-view-cell,
+#item4mobile .mui-table-view-cell {
+  border-bottom: 1px solid #eee;
+	padding: 11px 0px;
+}
+.mui-content {
+    background-color: #fff;
+}
+.stock-tools,
+.stock-item h5,
+.stock-item a{
+	font-size: 12px;
+}
+#order_list a.mui-btn {
+	padding: 5px;
+	width: 100%;
+	margin: 5px 0;
+}
+.mui-row.stock-tools {
+	padding: 5px 0px;
+	border-bottom: 1px solid #eee;
+}
+.mui-row.stock-tools .mui-col-xs-3,
+.mui-row.stock-tools .mui-col-xs-2 {
+  line-height: 34px;
+}
+.mui-input-row label~input, 
+.mui-input-row label~select, 
+.mui-input-row label~textarea, 
+.mui-input-row label~button {
+    float: right;
+    width: 65%;
+    margin-bottom: 0;
+    padding-left: 0;
+    border: 0;
+}
+.mui-input-row label~button.mui-btn {
+    width: 65% !important;
+		text-align: left;
+		padding: 15px 0;
+}
+li.mui-table-view-cell.mui-row.hold-item {
+    border-bottom: 1px solid #eee;
+}
+.mui-input-group .mui-input-row {
+    border-bottom: 1px solid #ddd;
+}
+.mui-table-view-cell.mui-active {
+	background-color: inherit;
+}
+.show-preset {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 50px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}

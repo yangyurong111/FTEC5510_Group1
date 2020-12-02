@@ -1,0 +1,97 @@
+html,
+body,
+.mui-content {
+	background-color: #FFF;
+}
+.mui-card img {
+	padding: 0px 80px;
+}
+.mui-card {
+    box-shadow: 0 1px 6px rgba(0,0,0,.3);
+    border-radius: 10px;
+    margin-bottom: 35px;
+}
+.mui-content .mui-table-view-cell .fa{
+    font-size: 30px;
+    color: cadetblue;
+}
+.mui-table-view:before {
+    background-color: #FFF;
+    top: 0px;
+}
+.mui-table-view:after {
+    background-color: #FFF;
+}
+.mui-table-view.mui-grid-view .mui-table-view-cell {
+    padding: 15px 0px;
+	margin-right: 0px;
+}
+.mui-content>.mui-table-view:first-child {
+    padding: 10px;
+}
+.mui-table-view.mui-grid-view .mui-table-view-cell>a:not(.mui-btn) {
+    margin: 0px;
+}
+li.mui-table-view-cell.mui-media.mui-col-xs-6 {
+	border-radius: 10px;
+}
+/* li.mui-table-view-cell.mui-media.mui-col-xs-6:focus, 
+li.mui-table-view-cell.mui-media.mui-col-xs-6:hover, 
+li.mui-table-view-cell.mui-media.mui-col-xs-6:active {
+    background-color: cadetblue;
+    box-shadow: 1px 1px 3px #ddd;
+}
+li.mui-table-view-cell.mui-media.mui-col-xs-6:focus .fa, 
+li.mui-table-view-cell.mui-media.mui-col-xs-6:hover .fa, 
+li.mui-table-view-cell.mui-media.mui-col-xs-6:active .fa,
+li.mui-table-view-cell.mui-media.mui-col-xs-6:focus .mui-media-body, 
+li.mui-table-view-cell.mui-media.mui-col-xs-6:hover .mui-media-body, 
+li.mui-table-view-cell.mui-media.mui-col-xs-6:active .mui-media-body {
+    color: #FFF;
+} */
+.mui-table-view.mui-grid-view {
+    padding: 0;
+}
+.col-white{
+	color: white;
+}
+.col-black{
+	color: black;
+}
+.show-preset {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 20px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+}
+.show-preset-bill{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	text-align: center;
+}
+.fa-caret-down:before {
+    content: "\f0d7";
+    color: #000;
+}
+.search-label {
+    width: 22%;
+    padding: 0px;
+}
+.search-input {
+    width: 76%;
+    display: inline-block;
+    padding: 0;
+}
+.bottom-btn{
+	position: fixed;
+	width: 100%;
+	padding: 10px;
+	bottom: 0px;
+}

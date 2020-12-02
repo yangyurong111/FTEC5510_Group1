@@ -1,0 +1,325 @@
+html,
+body,
+img {
+	border: 0;
+}
+.mui-content {
+	background-color: #FFF;
+}
+
+.mui-table-view.mui-grid-view {
+    padding: 0;
+}
+.index-box{
+	margin-top: -30px;
+}
+.index-box .mui-table-view.mui-grid-view .mui-table-view-cell {
+    padding: 0px 0px;
+    margin: 1px 0;
+    border-radius: 10px;
+}
+.fast-ntry .mui-table-view.mui-grid-view .mui-table-view-cell {
+    padding: 12px 5px;
+    margin: 5px 0;
+    border-radius: 10px;
+}
+.mui-table-view.mui-grid-view .mui-table-view-cell>a:not(.mui-btn) {
+    margin: 0;
+	padding: 0;
+}
+.mui-content>.mui-table-view:first-child {
+    padding: 15px 10px;
+	margin-top: 0px;
+}
+.mui-bar.mui-bar-transparent{
+	line-height: 41px;
+	padding-right: 0;
+}
+.mui-input-row.mui-search{
+	display: inline-block;
+    width: 70%;
+}
+.mui-input-row.mui-search input{
+    background-color: #FFF;
+}
+
+.mui-bar.mui-bar-transparent .customer-service,
+.mui-bar.mui-bar-transparent .message {
+	display: inline-block;
+    width: 15%;
+    text-align: center;
+    font-size: 24px;
+    float: right;
+    color: #FFF;
+}
+.mui-bar.mui-bar-transparent .customer-service i{
+    position: relative;
+    top: 2px;
+}
+.mui-bar .mui-search:before {
+    margin-top: -20px;
+}
+.index-box.mui-content>.mui-table-view:first-child{
+	background-color: cadetblue;
+	margin-top: 0px;
+	padding-top:20px;
+}
+.index-box .mui-table-view.mui-grid-view .mui-table-view-cell .mui-media-body{
+	color: #fff;
+}
+.banner.mui-content .mui-slider .mui-slider-group .mui-slider-item img{
+	height: 200px;
+}
+.news .mui-slider .mui-slider-group .mui-slider-item>a:not(.mui-control-item) {
+    height: 30px;
+}
+.news .mui-slider-title {
+    background-color: #FFF;
+}
+.news .fa-bookmark{
+	color: mediumslateblue;
+    margin-right: 20px;
+    font-size: 14px;
+}
+.mui-content.news{
+	padding: 5px 0px;
+    background-color: #FFF;
+    border-bottom: 1px solid #eee;
+}
+.mui-content.extension{
+    background-color: #FFF;
+}
+.mui-content.extension .mui-slider-item{
+    padding: 10px;
+}
+.mui-content.extension .mui-slider .mui-slider-group .mui-slider-item img {
+    height: 100px;
+}
+
+.mui-content .mui-table-view-cell .fa{
+    font-size: 30px;
+    color: cadetblue;
+}
+.mui-table-view:before {
+    background-color: #FFF;
+    top: 0px;
+}
+.mui-table-view:after {
+    background-color: #FFF;
+}
+.mui-table-view.mui-grid-view .mui-table-view-cell {
+    padding: 10px 0px 10px;
+}
+.mui-content>.mui-table-view:first-child {
+    padding: 20px;
+}
+.mui-table-view.mui-grid-view .mui-table-view-cell>a:not(.mui-btn) {
+    margin: 0;
+}
+li.mui-table-view-cell.mui-media.mui-col-xs-4 {
+	border-radius: 10px;
+}
+
+/* li.mui-table-view-cell.mui-media.mui-col-xs-4:focus, 
+li.mui-table-view-cell.mui-media.mui-col-xs-4:hover, 
+li.mui-table-view-cell.mui-media.mui-col-xs-4:active {
+    background-color: cadetblue;
+    box-shadow: 1px 1px 3px #ddd;
+}
+li.mui-table-view-cell.mui-media.mui-col-xs-4:focus .fa, 
+li.mui-table-view-cell.mui-media.mui-col-xs-4:hover .fa, 
+li.mui-table-view-cell.mui-media.mui-col-xs-4:active .fa,
+li.mui-table-view-cell.mui-media.mui-col-xs-4:focus .mui-media-body, 
+li.mui-table-view-cell.mui-media.mui-col-xs-4:hover .mui-media-body, 
+li.mui-table-view-cell.mui-media.mui-col-xs-4:active .mui-media-body {
+    color: #FFF;
+} */
+
+.mui-bar .mui-subtitle{
+	height: 44px;
+	min-width: 25%;
+	-webkit-box-flex: 0;
+	-webkit-flex: 0 0 25%;
+	-ms-flex: 0 0 25%;
+	flex: 0 0 25%;
+	padding: 0 0.9rem;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-ms-flex-align: center;
+	align-items: center;
+	font-size: 14px;
+	white-space: nowrap;
+	overflow: hidden;
+	/* color:blue; */
+	position: relative;
+}
+
+.total-asset{
+	width: 100%;
+	height: 100%;
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	-ms-flex: 1;
+	flex: 1;
+	overflow-y: auto;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+	position: relative;
+}
+
+.total-asset .head-box{
+	background: cadetblue;
+	padding: 2rem;
+	width: 100%;
+	height: 9rem;
+}
+
+.total-asset .head-body{
+	background-image: url("../images/head-bg.png");
+	background-size: 100%;
+	width: 92%;
+	box-shadow: 0 3px 15px #0a0a0a1f;
+	border-radius: 10px;
+	margin: -8.2rem auto 0;
+}
+
+.flex {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+	padding: 1px 14px 2px;
+	position: relative;
+}
+.flex .mui-btn{
+	background: #f4622a;
+	border-radius: 50px;
+	color: #fff;
+	font-size: 1rem;
+	font-weight: bold;
+	border: none;
+	padding: 0.3rem 0.9rem;
+}
+.flex-box {
+	-webkit-box-flex: 1;
+	-webkit-flex: 1;
+	flex: 1;
+	min-width: 0;
+	font-size: 14px;
+	color: #333;
+}
+
+.flex-box h1 {
+	font-size: 3.2rem;
+	color: #f32a4a;
+}
+.flex-box h1 i {
+	font-size: 1rem;
+	margin-top: -1rem;
+}
+.flex-box p {
+	font-size: 0.9rem;
+	color: #949494;
+}
+.flex-box h2 {
+	font-size: 2rem;
+	color: #303030;
+}
+
+.flex-box h3 {
+	font-size: 1.5rem;
+	color: #000000;
+}
+.flex-box h3 em {
+	font-style: normal;
+	font-size: 1rem;
+	color: #999;
+	font-weight: normal;
+}
+.more button {
+	background: #f6f5f5;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: cadetblue;
+	border-radius: 50px;
+	padding: 0.2rem 1.6rem;
+	border: none;
+}
+.flex-box h4 {
+	font-size: 1rem;
+	font-weight: normal;
+	color: #616161;
+	margin-bottom: 0.5rem;
+}
+.flex-box h4 em {
+	border: 1px solid #758ac3;
+	color: #6563e8;
+	font-size: 0.85rem;
+	border-radius: 2px;
+	font-style: normal;
+	padding: 0.15rem 0.4rem;
+	margin-right: 0.3rem;
+}
+.flex-float {
+	overflow: hidden;
+	position: relative;
+}
+.flex-float span {
+	display: block;
+	float: left;
+	text-align: left;
+	margin-right: 10rem;
+}
+.flex-float span h1 {
+	font-size: 2rem;
+	margin-bottom: 0.3rem;
+	position: relative;
+}
+.flex-float span h2 {
+	font-size: 1.5rem;
+	color: #444351;
+	line-height: 2.5rem;
+	position: relative;
+}
+.flex-float span h2 em {
+	font-size: 0.85rem;
+	margin-top: -1rem;
+	margin-left: 2.5rem;
+	font-weight: bold;
+	color: #3c3f4e;
+	position: absolute;
+	top: 10px;
+}
+.flex-float span h1 em {
+	font-size: 1rem;
+	margin-top: -1rem;
+	font-weight: bold;
+	position: absolute;
+	top: 16px;
+}
+
+.flex-float span p {
+	font-size: 1rem;
+	margin-top: 1.6rem; 
+	font-weight: bold;
+	position: absolute;
+	top: 26px;
+}
+
+.conduct-list .b-line:after {
+	left: 15px;
+	width: 92%;
+}
+.conduct-list {
+	padding-bottom: 1rem;
+}
+
+.chart-area{
+	margin: 10px;
+}
