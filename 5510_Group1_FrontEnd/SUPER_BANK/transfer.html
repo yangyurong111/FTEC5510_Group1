@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Open Banking</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link href="css/loading.css" rel="stylesheet" />
+		<link href="css/css.css" rel="stylesheet" />
+	</head>
+	<body style="background-color: #efeff4;">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">Transfer</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card" style="padding: 20px;">
+				<form class="form-horizontal">
+					<!-- 
+					<div class="form-group">
+						<label for="fromaccountlist" class="col-sm-4 control-label search-label">From Account : </label>
+						<div class="col-sm-8 search-input">
+							<span id="fromaccountlist" class="form-control">--</span>
+						</div>
+					</div>
+					-->
+					<div class="form-group">
+						<label for="fromaccountlist" class="col-sm-6 control-label deposit-label" style="font-size: 15px;">From Account: </label>
+						<div class="col-sm-6 deposit-input">
+							<input class="form-control" id="tdAccountNumberlist" required="true" >
+						</div>
+					</div>
+					
+					<!-- 
+					<div class="form-group">
+						<label for="toaccountlist" class="col-sm-4 control-label search-label">To Account : </label>
+						<div class="col-sm-8 search-input">
+							<span id="toaccountlist" class="form-control">--</span>
+						</div>
+					</div>
+					-->
+					<div class="form-group">
+						<label for="toaccountlist" class="col-sm-6 control-label deposit-label" style="font-size: 15px;">To Account: </label>
+						<div class="col-sm-6 deposit-input">
+							<input class="form-control" id="toaccountlist" required="true" placeholder="Please input account number">
+						</div>
+					</div>
+					
+					<!--
+					<div class="form-group">
+						<label for="amount" class="col-sm-4 control-label search-label">Amount : </label>
+						<div class="col-sm-8 search-input">							
+							<input type="number" id="amount" placeholder="10000" class="form-control" onkeyup="clearNoNum(this)" />
+						</div>
+					</div>
+					-->
+					<div class="form-group">
+						<label for="amount" class="col-sm-6 control-label deposit-label" style="font-size: 15px;">Transfer Amount: </label>
+						<div class="col-sm-6 deposit-input">
+							<input type="text" class="form-control" id="amount" required="true" placeholder="Please input transfer amount">
+						</div>
+					</div>
+					
+					<!--
+					<div class="form-group">
+						<label for="currency" class="col-sm-4 control-label search-label">Transfer Currency : </label>
+						<div class="col-sm-8 search-input">
+							<span id="currency" class="form-control">HKD</span>
+						</div>
+					</div>
+					-->
+					<div class="form-group">
+						<label for="currency" class="col-sm-6 control-label deposit-label" style="font-size: 15px;">Transfer Currency: </label>
+						<div class="col-sm-6 deposit-input">
+							<span class="form-control" id="currency">HKD</span>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<div class="col-sm-offset-4 col-sm-8 mui-text-center search-btn">
+							<button id="submit" class="btn btn-primary" style="font-size: 20px;margin: 10px;">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="mui-content" style="padding-top: 0;">
+			<div class="mui-card hidden" id="response_area" style="padding: 20px;">
+				<ul class="mui-table-view" id="response"></ul>
+			</div>
+		</div>
+
+		<script src="./js/mui.min.js"></script>
+		<script src="./js/main.js"></script>
+		<script src="./js/mui.picker.js"></script>
+		<script src="./js/mui.poppicker.js"></script>
+		<script src="./js/moment.js"></script>
+		<script src="./js/loading.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true
+			});
+			
+			var account0=localStorage.getItem("account");
+			tdAccountNumberlist.value = account0;
+			
+			var ws = null;
+			var token = null;
+			var balance = "0.00";
+			var selectfromaccount = savingaccount1
+			var selecttoaccount = currentaccount
+			var mask=mui.createMask();
+			
+			
+			
+			// H5 plus事件处理
+			function plusReady() {
+				ws = plus.webview.currentWebview();
+				ws.setStyle({
+					'popGesture': 'close'
+				});
+				token = plus.storage.getItem("token");
+
+				//Token check
+				if (!token) {
+					// mui.alert("Invalid login information, please try again after login. after login.", "Error", "OK", function() {
+					// 	mui.openWindow({
+					// 		url: "login.html",
+					// 		id: "login.html",
+					// 		show: {
+					// 			aniShow: 'pop-in',
+					// 			duration: 500
+					// 		},
+					// 		extras: { //extras里面的就是参数了
+
+					// 		},
+					// 		waiting: {
+					// 			autoShow: true, //自动显示等待框，默认为true
+					// 			title: 'Loading...'
+					// 		}
+					// 	});
+					// });
+				} else {
+					//初始化表单
+					initselector()
+					
+					if(!ws.number){
+						getaccountbalance(document.getElementById('fromaccountlist').innerHTML)
+					}else{
+						getaccountbalance(ws.number)
+					}
+
+					window.document.getElementById("submit").addEventListener("click", function(e) {
+						e.preventDefault();
+						e.stopPropagation();
+						var amount = document.querySelector("#amount").value
+						// alert(amount)
+						if (!amount || amount == "0") {
+							mui.alert("Invalid amount, please re-enter!", "Error", "OK")
+							return false
+						}else if (amount > balance) {
+							mui.alert("Insufficient amount, please re-enter!", "Error", "OK")
+							return false
+						}
+						var requestdata = {
+							"transferAmount": amount,
+							"transferInAccountNumber": document.getElementById('toaccountlist').innerHTML,
+							"transferOutAccountNumber": document.getElementById('fromaccountlist').innerHTML
+						}
+						
+						mui.ajax(host + "/deposit-experience/deposit/account/transfer",{
+							data:requestdata,
+							dataType:'json',//服务器返回json格式数据
+							type:'post',//HTTP请求类型
+							timeout:60000,
+							headers:{
+								'accept':'*/*',
+								'token':token,
+								'clientid':clientid,
+								'messageid':messageid,
+								'Content-Type':'application/json'
+								},
+							beforeSend: function() {
+								plus.nativeUI.showWaiting("Loading…", "div");
+								mask.show();
+							},
+							complete: function() {
+								plus.nativeUI.closeWaiting();
+								mask.close();
+							},
+							success:function(data){
+								if (data.code == "200") {
+									var response = data.data;
+									mui.alert("Transaction Accepted.", "Success", "OK", function(){
+										mui.back()
+									})
+									getaccountbalance(document.getElementById('fromaccountlist').innerHTML)
+								} else {
+									mui.alert("Get account info failed! The response is: \n" + JSON.stringify(data) + ".", "Error", "OK")
+								}
+							},
+							error:function(xhr,type,errorThrown){
+								console.log(type);
+								var msg = "Get account info failed! The response is: \n" + xhr.responseText + "."
+								if(type == "timeout"){
+									msg = "Get account info failed. Time out!"
+								}
+								mui.alert(msg, "Error", "OK")
+							}
+						});
+					});
+				}
+
+			}
+
+			function getaccountbalance(account) {
+				mui.ajax(host + "/deposit-experience/deposit/account/accountDetails/" + account,{
+					dataType:'json',//服务器返回json格式数据
+					type:'post',//HTTP请求类型
+					timeout:60000,
+					headers:{
+						'accept':'*/*',
+						'token':token,
+						'clientid':clientid,
+						'messageid':messageid,
+						'Content-Type':'application/json'
+						},
+					beforeSend: function() {
+						plus.nativeUI.showWaiting("Loading…", "div");
+						mask.show();
+					},
+					complete: function() {
+						plus.nativeUI.closeWaiting();
+						mask.close();
+					},
+					success:function(data){
+						if (data.code == "200") {
+							var response = data.data;
+							var str = "";
+
+							//Account Info
+							if (response.account) {
+								var account = response.account;
+								str += "<li class='mui-table-view-cell mui-text-center'><b>Account Info</b></li>"
+								if (account.accountnumber && typeof(account.accountnumber) != "undefined") {
+									str += "<li class='mui-table-view-cell'>Account Number: " + account.accountnumber + "</li>"
+								} else {
+									str += "<li class='mui-table-view-cell'>Account Number: </li>"
+								}
+								if (account.currencycode && typeof(account.currencycode) != "undefined") {
+									str += "<li class='mui-table-view-cell'>Currency Code: " + account.currencycode + "</li>"
+								} else {
+									str += "<li class='mui-table-view-cell'>Currency Code: </li>"
+								}
+								balance = Number(account.availablebalance)
+								if (account.availablebalance && typeof(account.availablebalance) != "undefined") {
+									str += "<li class='mui-table-view-cell'>Available Balance: " + account.availablebalance + "</li>"
+								} else {
+									str += "<li class='mui-table-view-cell'>Available Balance: 0</li>"
+								}
+								if (account.ledgerbalance && typeof(account.ledgerbalance) != "undefined") {
+									str += "<li class='mui-table-view-cell'>Ledger Balance: " + account.ledgerbalance + "</li>"
+								} else {
+									str += "<li class='mui-table-view-cell'>Ledger Balance: 0</li>"
+								}
+								if (account.holdingbalance && typeof(account.holdingbalance) != "undefined") {
+									str += "<li class='mui-table-view-cell'>Holding Balance: " + account.holdingbalance + "</li>"
+								} else {
+									str += "<li class='mui-table-view-cell'>Holding Balance: 0</li>"
+								}
+								if (account.lastupdateddate && typeof(account.lastupdateddate) != "undefined") {
+									str += "<li class='mui-table-view-cell'>Last Updated Time: " + moment.parseZone(Number(account.lastupdateddate)).local().format('YYYY-MM-DD HH:mm:ss') + "</li>"
+								} else {
+									str += "<li class='mui-table-view-cell'>Last Updated Time: </li>"
+								}
+
+							}
+
+							document.getElementById("response").innerHTML = str;
+							document.getElementById("response_area").classList.remove("hidden");
+						} else {
+							mui.alert("Get account info failed! The response is: \n" + JSON.stringify(data) + ".", "Error", "OK")
+						}
+					},
+					error:function(xhr,type,errorThrown){
+						console.log(type);
+						var msg = "Get account info failed! The response is: \n" + xhr.responseText + "."
+						if(type == "timeout"){
+							msg = "Get account info failed. Time out!"
+						}
+						mui.alert(msg, "Error", "OK")
+					}
+				});
+			}
+
+			function initselector() {
+				var pickerdata = getcurrentnumberpickerdata().concat(getsavingnumberpickerdata());
+				var frompicker = new mui.PopPicker();
+				frompicker.setData(pickerdata);
+				var fromaccountlist = document.getElementById('fromaccountlist');
+				
+				if(!ws.number){
+					frompicker.pickers[0].setSelectedIndex(0);
+					fromaccountlist.innerHTML = pickerdata[0].value;
+				}else{
+					selectfromaccount = ws.number
+					frompicker.pickers[0].setSelectedValue(ws.number);
+					fromaccountlist.innerHTML = ws.number;
+				}
+				fromaccountlist.addEventListener('tap', function(event) {
+					frompicker.show(function(items) {
+						fromaccountlist.innerHTML = items[0].value;
+						getaccountbalance(fromaccountlist.innerHTML)
+						selectfromaccount = items[0].value;
+					});
+				}, false);
+
+				var topicker = new mui.PopPicker();
+				topicker.setData(pickerdata);
+				var toaccountlist = document.getElementById('toaccountlist');
+				toaccountlist.innerHTML = pickerdata[1].value
+				topicker.pickers[0].setSelectedIndex(0);
+				toaccountlist.addEventListener('tap', function(event) {
+					topicker.show(function(items) {
+						toaccountlist.innerHTML = items[0].value;
+						selecttoaccount = items[0].value;
+					});
+				}, false);
+
+				var currencypicker = new mui.PopPicker();
+				currencypicker.setData(currencypickerdata);
+				var currencylist = document.getElementById('currency');
+				currencypicker.pickers[0].setSelectedValue(currencylist.innerHTML, 2000);
+				currencylist.addEventListener('tap', function(event) {
+					currencypicker.show(function(items) {
+						currencylist.innerHTML = items[0].value;
+					});
+				}, false);
+			}
+
+			if (window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}		
+</script>
+<!- 我添加的内容！-> 
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script>
+			 $(document).ready(function () {
+			 	$("#submit").click(function(){
+					var account = $("#tdAccountNumberlist").val();
+					var account2 =  localStorage.getItem("account");
+					var account3 =  $("#toaccountlist").val();
+
+					var username =  localStorage.getItem("username");
+					var amount= $("#amount").val();
+					if (account != account2){alert("Your account number is not consistant with your username! Please check!")}
+else {
+					$.ajaxSetup({async : false});  
+					$.ajax({
+							type : 'post',
+							url:"http://47.103.196.168/py_x3/transfer2",
+							timeout:5000,
+							data:JSON.stringify({"username":username, "amount":amount, "account":account3}),
+							success: function(data){
+							var data2=$.parseJSON(data); 
+							var data3=data2.result.split("@");
+							if (data3[0]=="Transfer Successfully!")
+							{alert(data3[0]);
+							
+							window.location.href = "subpage-Home.html"
+							}
+							else{alert(data2.result);}
+							},
+							error: function(data){
+							alert(data);
+							alert("连接失败，请检查手机网络")
+							}
+
+						});
+						return false;
+}
+
+				});
+
+			 })
+	</script>
+<!- 我添加的内容！-> 
+
+
+
+
+
+
+
+
+
+	</body>
+</html>

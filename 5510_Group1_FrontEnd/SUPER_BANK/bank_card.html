@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Open Banking</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link href="css/css.css" rel="stylesheet" />
+		<link href="css/creditcard.css" rel="stylesheet" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">Bank Card</h1>
+		</header>
+		<div class="mui-content" id="creditcardlist">
+			<div class="mui-card">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" id="5000010000000024">
+						<img src="images/creditcard.jpg" width="100%"/>
+						<div class="mui-text-center">
+							<h5>5000010000000024</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="mui-card">
+				<div class="mui-card-content">
+					<div class="mui-card-content-inner" id="5000010000000032">
+						<img src="images/creditcard.jpg" width="100%"/>
+						<div class="mui-text-center">
+							<h5>5000010000000032</h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="./js/mui.min.js"></script>
+		<script src="./js/main.js"></script>
+		<script src="./js/mui.picker.js"></script>
+		<script src="./js/mui.poppicker.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true
+			});
+			var ws = null;
+			var token = null;
+			var isSafari = false;
+			var balance = "0.00";
+			var mask=mui.createMask();
+
+			var ua = window.navigator.userAgent.toLowerCase(),
+				reg = /msie|applewebkit.+safari/;
+			if (reg.test(ua)) isSafari = true
+			// H5 plus事件处理
+			function plusReady() {
+				ws = plus.webview.currentWebview();
+				ws.setStyle({
+					'popGesture': 'close'
+				});
+
+				token = plus.storage.getItem("token");
+				
+				// window.addEventListener('refresh', function(e){//执行刷新
+				// console.log(1)
+				// 		location.reload();
+				// });
+
+				//Token check
+				if (!token) {
+					// mui.alert("Invalid login information, please try again after login.", "Error", "OK", function() {
+					// 	mui.openWindow({
+					// 		url: "login.html",
+					// 		id: "login.html",
+					// 		show: {
+					// 			aniShow: 'pop-in',
+					// 			duration: 500
+					// 		},
+					// 		extras: { //extras里面的就是参数了
+
+					// 		},
+					// 		waiting: {
+					// 			autoShow: true, //自动显示等待框，默认为true
+					// 			title: 'Loading...'
+					// 		}
+					// 	});
+					// });
+				} else {
+					console.log(plus.storage.getItem("creditCardaccountlist"))
+					var creditcardlist = JSON.parse(plus.storage.getItem("creditCardaccountlist"))
+					if(creditcardlist){
+						var str = ''
+						for(var i=0; i<creditcardlist.length; i++){
+							if(creditcardlist[i].accountStatus == "A"){
+								str += '<div class="mui-card">'+
+									'<div class="mui-card-content">'+
+										'<div class="mui-card-content-inner gotocreditcarddetail" id="'+creditcardlist[i].accountNumber+'">'+
+											'<img src="images/creditcard.jpg" width="100%"/>'+
+											'<div class="mui-text-center">'+
+												'<h4>'+creditcardlist[i].accountNumber+'</h4>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+								'</div>';
+							}
+							// }else if(creditcardlist[i].accountStatus == "C"){
+							// 	str += '<div class="mui-card">'+
+							// 		'<div class="mui-card-content">'+
+							// 			'<div class="mui-card-content-inner" id="'+creditcardlist[i].accountNumber+'">'+
+							// 				'<img src="images/creditcardCancel.jpg" width="100%"/>'+
+							// 				'<div class="mui-text-center">'+
+							// 					'<h4>'+creditcardlist[i].accountNumber+'</h4>'+
+							// 				'</div>'+
+							// 			'</div>'+
+							// 		'</div>'+
+							// 	'</div>';
+							// }else if(creditcardlist[i].accountStatus == "L"){
+							// 	str += '<div class="mui-card">'+
+							// 		'<div class="mui-card-content">'+
+							// 			'<div class="mui-card-content-inner" id="'+creditcardlist[i].accountNumber+'">'+
+							// 				'<img src="images/creditcardLoss.jpg" width="100%"/>'+
+							// 				'<div class="mui-text-center">'+
+							// 					'<h4>'+creditcardlist[i].accountNumber+'</h4>'+
+							// 				'</div>'+
+							// 			'</div>'+
+							// 		'</div>'+
+							// 	'</div>';
+							// }
+						}
+						document.getElementById("creditcardlist").innerHTML = str
+					}
+				}
+				mui(".mui-content").on("tap", ".gotocreditcarddetail", function(e) {
+					var id = this.id
+					mui.openWindow({
+						url: "creditcarddetail.html",
+						id: "creditcarddetail.html",
+						show: {
+							aniShow: 'pop-in',
+							duration: 500
+						},
+						extras: { //extras里面的就是参数了
+							number: id
+						},
+						waiting: {
+							autoShow: true, //自动显示等待框，默认为true
+							title: 'Loading...'
+						}
+					});
+				})
+			}
+
+			if (window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}
+		</script>
+	</body>
+</html>

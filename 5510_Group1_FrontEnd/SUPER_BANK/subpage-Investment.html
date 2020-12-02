@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Open Banking</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="css/css.css" rel="stylesheet" />
+		<link href="css/subpage-investment.css" rel="stylesheet" />
+	</head> 
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">Investment</h1>
+			<!-- <a href="invest_holding.html" style="padding-left: 75%;" class="mui-subtitle">invest holding</a> -->
+		</header>
+
+		<div class="mui-content invest-show">
+		    <div class="head-box"></div>
+		    <div class="head-body">
+		        <div class="flex">
+		            <div class="flex-box">
+		                <h2>Total Investment:</h2>
+						
+		            </div>
+		            
+		        </div>
+		        <div class="flex">
+		            <div class="flex-box">
+		                <h1 id='total'><i>(HKD)</i></h1>
+		                <!-- <p>Annualized Dividend</p> -->
+		            </div>
+					<a href="asset_detail.html">
+						<button type="button" class="mui-btn mui-btn-danger">more detail</button>
+					</a>
+					
+		        </div>
+		    </div>
+		    
+		
+		    <div class="mui-card" style="margin-top: 30px;">
+		    	<div class="mui-card-header">
+		    		Special Recommendation! !
+		    	</div>
+		    	<div class="mui-card-content" style="padding: 10px;">
+			<div class="conduct-list">
+			   
+			        <div class="flex-box">
+			            <h4 id="name1" >Citi T+360 <em>Citi Bank</em><em>Return No.1</em></h4>
+						<p>Invest Code: <em id="code1" class="code1">01001</em></p>
+						<div class="buy">
+							<button type="button" id="buy1" onclick="set_code(id)" style="margin-top: -6rem;">buy</button>
+						</div>
+			            <div class="flex-float">
+			                <span style="float: left;">
+			                    <h2 id="rate1"><font color="red">5.1958<em>%</em> </font></h2>
+			                    <p>Annualized Dividend</p>
+			                </span>
+			                <span style="float: right;">
+								<p id="day1" style="display: none;">360</p>
+			                     <h2 id="len1" style="margin-top: -3rem;">360 <em>days</em></h2>
+			                     <p id="jine1"> >1000 | low/medium risk</p>
+			                </span>
+			            </div>
+					
+			        </div>
+			    
+				</div>
+				</div>
+			</div>		
+			
+		    <div class="flex" style="padding-bottom:5px;margin-top: -10px;">
+		        <div class="flex-box">
+		            <h3>Other Choices </h3>
+		        </div>
+		    </div>
+			
+			
+		    <div class="conduct-list">
+		        <a href="javascript:;" class="flex b-line">
+		            <div class="flex-box">
+		                <h4 id="name2">Citi T+360 <em>Citi Bank</em><em>Return No.1</em></h4>
+						<p>Invest Code: <em id="code2" class="code2">01002</em></p>
+						<div class="buy">
+							<button type="button" id="buy2" onclick="set_code(id)">buy</button>
+						</div>
+						<div class="flex-float">
+		                    <span style="float: left;">
+		                        <h2 id="rate2"><font color="red">5.1958<em>%</em> </font></h2>
+		                        <p>Annualized Dividend</p>
+		                    </span>
+		                    <span style="float: right;">
+								<p id="day2" style="display: none;">360</p>
+			                     <h2 id="len2" style="margin-top: -3rem;">360 <em>days</em></h2>
+			                     <p id="jine2"> >1000 | low/medium risk</p>
+		                    </span>
+		                </div>
+		
+		            </div>
+		        </a>		        
+				<a href="javascript:;" class="flex b-line">
+		            <div class="flex-box">
+		                <h4 id="name3">HSBC T+180 <em>HSBC</em></h4>
+						<p>Invest Code: <em id="code3" class="code3">01003</em></p>
+						<div class="buy">
+							<button type="button" id="buy3" onclick="set_code(id)">buy</button>
+						</div>
+						<div class="flex-float">
+		                    <span style="float: left;">
+		                        <h2 id="rate3"><font color="red">4.6958<em>%</em></font></h2>
+		                        <p>Annualized Dividend</p>
+		                    </span>
+		                    <span style="float: right;">
+								<p id="day3" style="display: none;">180</p>
+			                     <h2 id="len3" style="margin-top: -3rem;">360 <em>days</em></h2>
+			                     <p id="jine3"> >1000 | low/medium risk</p>
+		                    </span>
+		                </div>		
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="flex b-line">
+		            <div class="flex-box">
+		                <h4 id="name4">Hang Seng T+120 <em>Hang Seng Bank</em></h4>
+						<p>Invest Code: <em id="code4" class="code4">01004</em></p>
+						<div class="buy">
+							<button type="button" id="buy4" onclick="set_code(id)">buy</button>
+						</div>
+						<div class="flex-float">
+		                    <span style="float: left;">
+		                        <h2  id="rate4"><font color="red">4.5958<em>%</em></font></h2>
+		                        <p>Annualized Dividend</p>
+		                    </span>
+		                    <span style="float: right;">
+								<p id="day4" style="display: none;">120</p>
+			                     <h2 id="len4" style="margin-top: -3rem;">360 <em>days</em></h2>
+			                     <p id="jine4"> >1000 | low/medium risk</p>
+		                    </span>
+		                </div>
+		
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="flex b-line">
+		            <div class="flex-box">
+		                <h4 id= "name5">Standard Chartered T+270 <em>Standard Chartered Bank</em></h4>
+						<p>Invest Code: <em id="code5" class="code5">01005</em></p>
+						<div class="buy">
+							<button type="button" id="buy5" onclick="set_code(id)">buy</button>
+						</div>
+						<div class="flex-float">
+		                    <span style="float: left;">
+		                        <h2 id="rate5"><font color="red">5.0958<em>%</em></font></h2>
+		                        <p>Annualized Dividend</p>
+		                    </span>
+		                    <span style="float: right;">
+								<p id="day5" style="display: none;">270</p>
+			                     <h2 id="len5" style="margin-top: -3rem;">360 <em>days</em></h2>
+			                     <p id="jine5"> >1000 | low/medium risk</p>
+		                    </span>
+		                </div>
+		
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="flex b-line">
+		            <div class="flex-box">
+		                <h4 id="name6">Bank of China T+180 <em>Bank of China</em></h4>
+						<p>Invest Code: <em id="code6" class="code6">01006</em></p>
+						<div class="buy">
+							<button type="button" id="buy6" onclick="set_code(id)">buy</button>
+						</div>
+						<div class="flex-float">
+		                    <span style="float: left;">
+		                        <h2 id="rate6"><font color="red">4.8958<em>%</em></font></h2>
+		                        <p>Annualized Dividend</p>
+		                    </span>
+		                    <span style="float: right;">
+								<p id="day6" style="display: none;">180</p>
+			                     <h2 id="len6" style="margin-top: -3rem;">360 <em>days</em></h2>
+			                     <p id="jine6"> >1000 | low/medium risk</p>
+		                    </span>
+		                </div>
+		
+		            </div>
+		        </a>
+		    </div>
+		    <div style="height:80px;"></div>
+		</section>
+		
+		<script src="./js/mui.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+		<!-- <script src="./js/main.js"></script> -->
+		<script>
+			mui.init({
+				swipeBack: false
+			});
+		
+			function set_code(id){
+				if(id=="buy1"){
+					var el = document.querySelector('.code1');
+					invest_code = el.innerHTML;
+					localStorage.setItem("invest_code", invest_code);
+					// alert(invest_code)
+					var invest_day = $("#day1").text();		
+					localStorage.setItem("invest_day", invest_day);
+					window.location.href = "invest_buy.html";
+				};
+				if(id=="buy2"){
+					var el = document.querySelector('.code2');
+					invest_code = el.innerHTML;
+					localStorage.setItem("invest_code", invest_code);
+					// alert(invest_code)
+					var invest_day = $("#day2").text();	
+					localStorage.setItem("invest_day", invest_day);
+					window.location.href = "invest_buy.html";
+				};
+				if(id=="buy3"){
+					var el = document.querySelector('.code3');
+					invest_code = el.innerHTML;
+					localStorage.setItem("invest_code", invest_code);
+					// alert(invest_code)
+					var invest_day = $("#day3").text();	
+					localStorage.setItem("invest_day", invest_day);
+					window.location.href = "invest_buy.html";
+				};
+				if(id=="buy4"){
+					var el = document.querySelector('.code4');
+					invest_code = el.innerHTML;
+					localStorage.setItem("invest_code", invest_code);
+					// alert(invest_code)
+					var invest_day = $("#day4").text();	
+					localStorage.setItem("invest_day", invest_day);
+					window.location.href = "invest_buy.html";
+				};
+				if(id=="buy5"){
+					var el = document.querySelector('.code5');
+					invest_code = el.innerHTML;
+					localStorage.setItem("invest_code", invest_code);
+					// alert(invest_code)
+					var invest_day = $("#day5").text();	
+					localStorage.setItem("invest_day", invest_day);
+					window.location.href = "invest_buy.html";
+				};
+				if(id=="buy6"){
+					var el = document.querySelector('.code6');
+					invest_code = el.innerHTML;
+					localStorage.setItem("invest_code", invest_code);
+					// alert(invest_code)
+					var invest_day = $("#day6").text();	
+					localStorage.setItem("invest_day", invest_day);
+					window.location.href = "invest_buy.html";
+				};
+			}
+			
+
+			// function openDetail(){
+			//     mui.openWindow({
+			// 	url    : 'asset_detail.html',
+			// 	extras :
+			// 	{}
+			//     });
+			// }
+			
+			function openMore(){
+			    mui.openWindow({
+				url    : 'invest_show.html',
+				extras :
+				{}
+			    });
+			}
+			
+			function openBuy(){
+			    mui.openWindow({
+				url    : 'invest_buy.html',
+				extras :
+				{}
+			    });
+			}
+		</script>
+
+<script>
+$("#name1").html('')
+$("#rate1").html('<font color="red"><em>%</em> </font>')
+$("#code1").html('')
+$("#len1").html(' <em>days</em>')
+$("#jine1").html('>| low/medium risk')
+
+
+</script>
+
+
+
+
+
+
+<!- 我添加的内容！-> 
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+	<script>
+			 $(document).ready(function () {
+					var username =  localStorage.getItem("username");
+
+					$.ajax({
+							type : 'post',
+							url:"http://47.103.196.168/py_x3/invest_page",
+							timeout:5000,
+							data:JSON.stringify({"username":username}),
+							success: function(data){
+							var data2=$.parseJSON(data); 
+							var data3=data2.result;
+data3=data3.split('#');
+for (i = 0; i < data3.length; i++) { 
+var temp=data3[i].split('@');
+var i1=i+1;
+$("#name"+i1.toString()).html(temp[0]);
+$("#rate"+i1.toString()).html(temp[1]);
+$("#code"+i1.toString()).html(temp[2]);
+
+$("#len"+i1.toString()).html(temp[3]);
+$("#day"+i1.toString()).html(temp[3].split(' ')[0]);
+
+$("#jine"+i1.toString()).html(temp[4]);
+ }
+							},
+							error: function(data){
+							alert(data);
+							alert("连接失败，请检查手机网络")
+							}
+						});
+
+
+			$.ajax({
+							type : 'post',
+							url:"http://47.103.196.168/py_x3/total_invest2",
+							timeout:5000,
+							data:JSON.stringify({"username":username}),
+							success: function(data){
+							var data4=$.parseJSON(data); 
+							var data5=data4.result.split("@");
+							$("#total").html(parseInt(data5[0])+"<i>(HKD)</i>");
+							},
+							error: function(data){
+							alert(data);
+							alert("连接失败，请检查手机网络")
+							}
+						});
+
+
+ 
+
+
+
+
+			 })
+	</script>
+
+
+
+
+
+
+<!- 我添加的内容！-> 
+
+
+
+	</body>
+</html>

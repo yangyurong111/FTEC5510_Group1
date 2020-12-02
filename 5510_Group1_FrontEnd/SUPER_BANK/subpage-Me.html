@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="./css/mui.min.css">
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="css/css.css" rel="stylesheet" />
+		<link href="./css/subpage-Me.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="icon/iconfont.css"/>
+		<style type="text/css">
+			.iconfont{
+				/* color: cadetblue; */
+				font-size: xx-large;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<!-- <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a> -->
+			<h1 class="mui-title">My Profile</h1>
+		</header>
+		
+		<div class="mui-content">
+			<div class="mui-scroll">
+				
+				<ul id="showloginbtn" class="mui-table-view">
+					<li id="submit" class="mui-table-view-cell" style="text-align: center;">
+						<img src="images/shopping.png" width="60" height="60" style="float:left" />
+						<div style="float:left; margin-left:10px; margin-top:10px; ">
+							<div id="username" style="color:#FF0000; font-size: 18px;">Hello, David</div>
+							<div>
+								<p style="color:#FF0000; font-size: 16px;margin: 0; display: inline;">Account No.: </p>
+								<p id="account_no" style=" display: inline;margin: 0;color:#FF0000; font-size: 14px;" align="right">1234 5678 9876 5432</p>
+								<textarea id="input">这是幕后黑手</textarea>
+								<!-- <button class="mui-btn-outlined btn-copy" onclick="copyText()">copy</button> -->
+							</div>
+							
+						</div>
+						<div>
+							<button class="mui-btn-outlined btn-copy" onclick="copyText()">copy</button>
+						</div>
+					</li>
+				</ul>
+				
+						
+				<!-- <ul id="showloginbtn" class="mui-table-view">
+					<li id="submit" class="mui-table-view-cell" style="text-align: center;">
+						<img src="./images/zhangdan.jpg" height="30" width="30" style="float:left" />
+						<a href="account_detail.html"><font size="4" color="black" style="float:left">Bill</font></a>										 
+					</li>
+				</ul> -->
+				
+				<ul id="showloginbtn" class="mui-table-view">
+					<li id="submit" class="mui-table-view-cell" style="text-align: center;">
+						<!-- <img src="./images/holder.jpg"30" height="30" width="30" style="float:left" /> -->
+						<span class="mui-icon iconfont icon-property" style="float:left;color: orange;"></span>
+						<a href="asset_detail.html"><font size="4" color="black" style="float:left">Total Asset</font></a>										 
+					</li>
+				</ul>
+				
+				<!-- <ul id="showuserinfo" class="mui-table-view mui-table-view-chevron">
+					<li class="mui-table-view-cell mui-media">
+						<a class="mui-navigate-right" id="gotouserinfo">
+							<i class="fa fa-user-o mui-pull-left head-img" aria-hidden="true"></i>
+							<div class="mui-media-body">
+								Hello <span id="nickname"></span>
+								<p class='mui-ellipsis'>Account:<span id="account"></span></p>
+							</div>
+						</a>
+					</li>
+				</ul> -->
+				
+				<ul id="showloginbtn" class="mui-table-view">
+					<li id="submit" class="mui-table-view-cell" style="text-align: center;">
+						<!-- <img src="./images/hhh.png" height="30" width="30" style="float:left" /> -->
+						<span class="mui-icon iconfont icon-yinhangka" style="float:left;color: lightseagreen"></span>
+						<a href="bank_card.html"><font size="4" color="black" style="float:left">Bank Card</font></a>										 
+					</li>
+				</ul>
+				
+				<!-- <ul id="showloginbtn" class="mui-table-view">
+					<li id="submit" class="mui-table-view-cell" style="text-align: center;">
+						<img src="./images/icon-ti-001.png" height="30" width="30" style="float:left" />
+						<a href="account_detail.html"><font size="4" color="black" style="float:left">Credit Score</font></a>										 
+					</li>
+				</ul> -->
+				
+				<!-- <ul id="showloginbtn" class="mui-table-view">
+					<li id="submit" class="mui-table-view-cell" style="text-align: center;">
+						<img src="./images/cash.png" height="30" width="30" style="float:left" />
+						<a href="loan_detail.html"><font size="4" color="black" style="float:left">Loan</font></a>										 
+					</li>
+				</ul> -->
+				
+				<ul class="mui-table-view mui-table-view-chevron">
+										
+					<!-- <li class="mui-table-view-cell">
+						<img src="./images/icon-ti-002.png" height="20" width="20" style="float:left" />
+						<a><font size="2" color="black" style="float:left">help</font></a>
+					</li> -->
+					
+					<li class="mui-table-view-cell">
+						<!-- <img src="./images/icon-ti-001.png" height="30" width="30" style="float:left" /> -->
+						<span class="mui-icon iconfont icon-shezhi1" style="float:left;color: gray;"></span>
+						<a href="setting.html"><font size="4" color="black" style="float:left" >Settings</font></a>
+					</li>
+				</ul>
+				
+				<ul id="showlogout" class="mui-table-view" >
+					<li id="logout" class="mui-table-view-cell" style="text-align: center;">
+						<a id="logout" href="login.html" style="color: cadetblue;font-weight: 500;">Logout</a>
+					</li>
+					
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="./js/mui.min.js "></script>
+	<script src="./js/moment.js"></script>
+	<script src="./js/main.js"></script>
+
+
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+<script>
+	var username=localStorage.getItem("username");
+	$("#username").html("Hello, "+username)
+	var account=localStorage.getItem("account");
+	$("#account_no").html(account)
+
+	function copyText() {
+		var text = document.getElementById("account_no").innerText;
+		var input = document.getElementById("input");
+		input.value = text; // 修改文本框的内容
+		input.select(); // 选中文本
+		document.execCommand("copy"); // 执行浏览器复制命令
+		alert("Copy successfully!");
+	s}
+
+
+
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Open Banking</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="css/css.css" rel="stylesheet" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link href="css/subpage-home.css" rel="stylesheet" />
+		
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">Home</h1>
+			
+		</header>
+		<!-- <div class="mui-content total-account">
+			<div class="mui-card">
+					<div class="mui-card-header">Total Account($)</div>
+					<div class="mui-card-content" onclick="openAccount()"><center>999.99</center></div>
+			</div>
+		</div>
+		 -->
+				<div class="mui-content total-asset">
+					<div class="head-box"></div>
+					<div class="head-body">
+						<div class="flex">
+							<div class="flex-box">
+								<h2>Total Asset: </h2>
+								<p style="color:#FF0000; font-size: 12px; display: inline;">Account No.: </p>
+								<p id="account_no" style=" display: inline;margin: 0;color:#FF0000; font-size: 12px;" align="right">1234 5678 9876 5432</p>
+								
+							</div>
+						</div>
+						<div class="flex" style="margin-top: -20px;">
+							<div class="flex-box" >
+								<h1 id="total_asset"><i>(HKD)</i></h1>
+								<p style="margin-top: -10px;">Saving + Investment</p>
+							</div>
+							<a href="asset_detail.html">
+								<button type="button" class="mui-btn mui-btn-danger">more detail</button>
+							</a>
+							
+						</div>
+					</div>
+				
+					<div class="mui-content chart-area">					
+						<div class="mask"></div>
+						<div class="mui-text-center account-info">
+							<div class="mui-row">
+								<a class="mui-col-xs-4 mui-text-center" href="asset_detail.html" style="float: left;margin-left: 10%;">
+									<h4 id="current_number_header">0</h4>
+									<h5 class="color-grey">Saving</h5>
+									<p><span class="dot"></span></p>
+								</a>
+								<a class="mui-col-xs-4 mui-text-center" href="asset_detail.html" style="float: right;margin-right: 10%;">
+									<h4 id="saving_number_header">0</h4>
+									<h5 class="color-grey">Investment</h5>
+									<p><span class="dot"></span></p>
+								</a>
+								<!-- <a class="mui-col-xs-4 mui-text-center" href="asset_detail.html">
+									<h4 id="payment_number_header">0</h4>
+									<h5 class="color-grey">Loan</h5>
+									<p><span class="dot"></span></p>
+								</a> -->
+							</div>
+						</div>
+					</div>
+					</div>
+						
+						
+		<div class="mui-content index-box">
+			<ul class="mui-table-view mui-grid-view">			
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="deposit" class="type-item" href="deposit.html">
+						<img class="mui-media-object" src="./images/deposit.png">
+						<div class="mui-media-body" style="font-size: 15px;" onclick="openDeposit()">Deposit</div>
+					</a></li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="withdraw" class="type-item" href="withdraw.html">
+						<img class="mui-media-object" src="./images/cash.png">
+						<div class="mui-media-body" style="font-size: 15px;" onclick="openWithdraw()">Withdraw</div>
+					</a></li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="transfer" class="type-item" href="transfer.html">
+						<img class="mui-media-object" src="./images/search.png">
+						<div class="mui-media-body" style="font-size: 15px;" onclick="openTransfer()">Transfer</div>
+					</a></li>
+			</ul>
+		</div>
+		
+		<div class="flicker-example" data-block-text="false" style="margin-top: -2px;height: 200px;">
+			
+			<ul>
+				
+				<li data-background="images/home1.png">
+					<!-- <div class="flick-title">Flickerplate Is Working</div>
+					<div class="flick-sub-text">Heaven forbid this package you downloaded is broken. That wouldn't be embarrassing at all.</div> -->
+				</li>
+				
+				<li data-background="images/home2.png">
+					<!-- <div class="flick-title">Editable via Javascript or CSS</div>
+					<div class="flick-sub-text">Take a look at the extensive documentation to see how you can change the settings in multiple ways.</div> -->
+				</li>
+				
+				<li data-background="images/home3.png">
+					<!-- <div class="flick-title">Touch Enabled Through the jQuery Finger Library</div>
+					<div class="flick-sub-text">jQuery Finger is a great touch library that has been included as part of the Flickerplate package.</div> -->
+				</li>
+				
+			</ul>
+			
+		</div>
+		
+		
+		<script src="./js/mui.min.js"></script>
+		<script src="./js/main.js"></script>
+		<script>
+
+			function openAccount(){
+			    mui.openWindow({
+				url    : 'asset_detail.html',
+				extras :
+				{}
+			    });
+			}
+			
+			function openDeposit(){
+						    mui.openWindow({
+							url    : 'deposit.html',
+							extras :
+							{}
+						    });
+						}
+						
+			function openWithdraw(){
+						    mui.openWindow({
+							url    : 'withdraw.html',
+							extras :
+							{}
+						    });
+						}
+						
+			function openTransfer(){
+						    mui.openWindow({
+							url    : 'transfer.html',
+							extras :
+							{}
+						    });
+						}	
+											
+		</script>
+
+
+<!- 我添加的内容！-> 
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script>
+
+		
+					var username = localStorage.getItem("username");
+					var password= localStorage.getItem("username");
+					var account=localStorage.getItem("account");
+					$("#account_no").html(account)
+			$.ajaxSetup({async : false});  
+			$.ajax({
+							type : 'post',
+							url:"http://47.103.196.168/py_x3/total_deposit2",
+							timeout:5000,
+							data:JSON.stringify({"username":username}),
+							success: function(data){
+							var data2=$.parseJSON(data); 
+							var data3=data2.result.split("@");
+							$("#current_number_header").html(data3[0])
+							localStorage.setItem("temp", data3[0]);
+							},
+							error: function(data){
+							alert(data);
+							alert("连接失败，请检查手机网络")
+							}
+						});
+			
+
+			$.ajax({
+							type : 'post',
+							url:"http://47.103.196.168/py_x3/total_invest2",
+							timeout:5000,
+							data:JSON.stringify({"username":username}),
+							success: function(data){
+							var data4=$.parseJSON(data); 
+							var data5=data4.result.split("@");
+							$("#saving_number_header").html(data5[0])
+							var temp = localStorage.getItem("temp");
+							$("#total_asset").html(parseInt(temp)+parseInt(data5[0])+"<i>(HKD)</i>");
+							},
+							error: function(data){
+							alert(data);
+							alert("连接失败，请检查手机网络")
+							}
+						});
+alert(data5[0]);
+	</script>
+<!- 我添加的内容！-> 
+
+<script src="js/min/jquery-v1.10.2.min.js" type="text/javascript"></script>
+    <script src="js/min/modernizr-custom-v2.7.1.min.js" type="text/javascript"></script>
+    <script src="js/min/jquery-finger-v0.1.0.min.js" type="text/javascript"></script>
+
+    <!--Include flickerplate-->
+	<link href="css/flickerplate.css"  type="text/css" rel="stylesheet">
+    <script src="js/min/flickerplate.min.js" type="text/javascript"></script>
+	
+	<!--Execute flickerplate-->
+	<script>
+	$(document).ready(function(){
+		
+		$('.flicker-example').flicker();
+	});
+	</script>
+
+	</body>
+</html>

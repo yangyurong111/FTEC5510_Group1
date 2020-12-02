@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Open Banking</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+		<link href="css/css.css" rel="stylesheet" />
+		<link href="css/subpage-investment.css" rel="stylesheet" />
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">Loan</h1>
+			<a href="invest_holding.html" style="padding-left: 75%;" class="mui-subtitle">Loan holding</a>
+		</header>
+<!-- 		<div class="mui-content">
+			<div class="mui-card invest-recommend">
+				<div class="mui-card-header">
+					Current Deposit
+				</div>
+				<div class="mui-card-content">
+						5.1880% <button type="button" class="mui-btn mui-btn-danger mui-btn-outlined" onclick="openBuy()">more detail</button>
+						<p>highest 7 day rate of return</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="mui-content index-box">
+			<ul class="mui-table-view mui-grid-view">
+				<!-- <li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="Term_Deposit" class="type-item">
+						<i class="fa fa-podcast" aria-hidden="true"></i>
+						<div class="mui-media-body">Term Deposit</div>
+					</a></li> 
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="Foreign_Exchange" class="type-item">
+						<i class="fa fa-window-restore" aria-hidden="true"></i>
+						<div class="mui-media-body">Foreign Exchange</div>
+					</a></li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="Mutual_Fund" class="type-item">
+						<i class="fa fa-ravelry" aria-hidden="true"></i>
+						<div class="mui-media-body">Mutual Fund</div>
+					</a></li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="Precious_Metal" class="type-item">
+						<i class="fa fa-cog" style="color: grey;" aria-hidden="true"></i>
+						<div class="mui-media-body">Precious Metal</div>
+					</a></li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-4">
+					<a id="Stock" class="type-item">
+						<i class="fa fa-line-chart" aria-hidden="true"></i>
+						<div class="mui-media-body">Stock</div>
+					</a></li>
+			</ul>
+		</div>
+ -->
+		
+		<div class="mui-content invest-show">
+		    <div class="head-box"></div>
+		    <div class="head-body">
+		        <div class="flex">
+		            <div class="flex-box">
+		                <h2>Special Recommendation</h2>
+						<!-- <h2>Current Deposit<p>Steady Income｜Fast Redemption｜Free withdrawal</p></h2> -->
+		            </div>
+<!-- 		            <div class="link">
+		                <a href="javascript:;"></a>
+		            </div> -->
+		        </div>
+		        <div class="flex">
+		            <div class="flex-box">
+		                <h1><i>$</i>10,000<i>at most</i></h1>
+		                <p>charge $3 for $10,000 per day</p>
+		            </div>
+					<button type="button" class="mui-btn mui-btn-danger" onclick="openDetail()">more detail</button>
+		        </div>
+		    </div>
+		    <!-- <div class="jq22-palace">
+		        <a href="javascript:;" class="jq22-palace-grid">
+		            <div class="jq22-palace-grid-icon">
+		                <img src="images/icon-ti-001.png" alt="">
+		            </div>
+		            <div class="jq22-palace-grid-text">
+		                <h2>定期</h2>
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="jq22-palace-grid">
+		            <div class="jq22-palace-grid-icon">
+		                <img src="images/icon-ti-002.png" alt="">
+		            </div>
+		            <div class="jq22-palace-grid-text">
+		                <h2>活期</h2>
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="jq22-palace-grid">
+		            <div class="jq22-palace-grid-icon">
+		                <img src="images/icon-ti-003.png" alt="">
+		            </div>
+		            <div class="jq22-palace-grid-text">
+		                <h2>银行理财</h2>
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="jq22-palace-grid">
+		            <div class="jq22-palace-grid-icon">
+		                <img src="images/icon-ti-004.png" alt="">
+		            </div>
+		            <div class="jq22-palace-grid-text">
+		                <h2>券商资管</h2>
+		            </div>
+		        </a>
+		
+		        <a href="javascript:;" class="jq22-palace-grid">
+		            <div class="jq22-palace-grid-icon">
+		                <img src="images/icon-ti-005.png" alt="">
+		            </div>
+		            <div class="jq22-palace-grid-text">
+		                <h2>借钱</h2>
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="jq22-palace-grid">
+		            <div class="jq22-palace-grid-icon">
+		                <img src="images/icon-ti-006.png" alt="">
+		            </div>
+		            <div class="jq22-palace-grid-text">
+		                <h2>保险</h2>
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="jq22-palace-grid">
+		            <div class="jq22-palace-grid-icon">
+		                <img src="images/icon-ti-007.png" alt="">
+		            </div>
+		            <div class="jq22-palace-grid-text">
+		                <h2>黄金</h2>
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="jq22-palace-grid">
+		            <div class="jq22-palace-grid-icon">
+		                <img src="images/icon-ti-008.png" alt="">
+		            </div>
+		            <div class="jq22-palace-grid-text">
+		                <h2>基金</h2>
+		            </div>
+		        </a>
+		    </div>
+		    -->
+			<div class="index-box">
+				<ul class="mui-table-view mui-grid-view">
+					<li class="mui-table-view-cell mui-media mui-col-xs-4">
+						<a id="Term_Deposit" class="type-item">
+							<i class="fa fa-podcast" aria-hidden="true"></i>
+							<div class="mui-media-body">Term Deposit</div>
+						</a></li> 
+					<li class="mui-table-view-cell mui-media mui-col-xs-4">
+						<a id="Foreign_Exchange" class="type-item">
+							<i class="fa fa-window-restore" aria-hidden="true"></i>
+							<div class="mui-media-body">Foreign Exchange</div>
+						</a></li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4">
+						<a id="Mutual_Fund" class="type-item">
+							<i class="fa fa-ravelry" aria-hidden="true"></i>
+							<div class="mui-media-body">Mutual Fund</div>
+						</a></li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4">
+						<a id="Precious_Metal" class="type-item">
+							<i class="fa fa-cog" style="color: grey;" aria-hidden="true"></i>
+							<div class="mui-media-body">Precious Metal</div>
+						</a></li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-4">
+						<a id="Stock" class="type-item">
+							<i class="fa fa-line-chart" aria-hidden="true"></i>
+							<div class="mui-media-body">Stock</div>
+						</a></li>
+				</ul>
+			</div>
+			<!-- <div class="jq22-ad">
+		        <img src="images/ad-001.png" alt="">
+		    </div> -->
+		   
+		    <div class="flex" style="padding-bottom:5px;">
+		        <div class="flex-box">
+		            <h3>Convenience<em> life more convenient</em></h3>
+		        </div>
+		        <div class="more">
+		            <button onclick="openMore()">more</button>
+		        </div>
+		    </div>
+		    <div class="conduct-list">
+		        <a href="javascript:;" class="flex b-line">
+		            <div class="flex-box">
+		                <h4>Daily-life Loan <em>transfer to your account with 15 mins</em></h4>
+		                <div class="flex-float">
+		                    <span>
+		                        <h2><font color="red">10,000<em>atMost</em></font></h2>
+		                        <p>charge $3 for $10,000 /D</p>
+		                    </span>
+		                    <span>
+		                         <h2>360 <em>days</em></h2>
+		                         <p>Load period</p>
+		                    </span>
+		                </div>		
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="flex b-line">
+		            <div class="flex-box">
+		                <h4>Education Loan <em>transfer to your account with 15 mins</em></h4>
+		                <div class="flex-float">
+		                    <span>
+		                        <h2><font color="red">20,000<em>atMost</em></font></h2>
+		                        <p>charge $1.5 for $10,000 /D</p>
+		                    </span>
+		                    <span>
+		                         <h2>720 <em>days</em></h2>
+		                         <p>Load period</p>
+		                    </span>
+		                </div>
+		
+		            </div>
+		        </a>
+		        <a href="javascript:;" class="flex b-line">
+		            <div class="flex-box">
+		                <h4>Vehicle Loan <em>transfer to your account with 15 mins</em></h4>
+		                <div class="flex-float">
+		                    <span>
+		                        <h2><font color="red">40,000<em>atMost</em></font></h2>
+		                        <p>charge $2.5 for $10,000 /D</p>
+		                    </span>
+		                    <span>
+		                         <h2>180 <em>days</em></h2>
+		                         <p>Load period</p>
+		                    </span>
+		                </div>		
+		            </div>
+		        </a>
+				<a href="javascript:;" class="flex b-line">
+				    <div class="flex-box">
+				        <h4>Mortgage Loan <em>transfer to your account with 15 mins</em></h4>
+				        <div class="flex-float">
+				            <span>
+				                <h2><font color="red">80,000<em>atMost</em></font></h2>
+				                <p>charge $5 for $10,000 /D</p>
+				            </span>
+				            <span>
+				                 <h2>5 <em>years</em></h2>
+				                 <p>Load period</p>
+				            </span>
+				        </div>		
+				    </div>
+				</a>	
+		    </div>
+		    <div style="height:80px;"></div>
+		</section>
+		
+		<script src="./js/mui.min.js"></script>
+		<script src="./js/main.js"></script>
+		<script>
+			mui.init({
+				swipeBack: false
+			});
+			// H5 plus事件处理
+			function plusReady() {
+				mui(".mui-table-view").on("tap", ".type-item", function(e) {
+					//Token check
+					token = plus.storage.getItem("token");
+					if (!token) {
+						mui.alert("Invalid login information, please try again after login.", "Error", "OK", function() {
+							mui.openWindow({
+								url: "login.html",
+								id: "login.html",
+								show: {
+									aniShow: 'pop-in',
+									duration: 500
+								},
+								extras: { //extras里面的就是参数了
+
+								},
+								waiting: {
+									autoShow: true, //自动显示等待框，默认为true
+									title: 'Loading...'
+								}
+							});
+						});
+					} else {
+						//Record function type
+						var id = this.id
+						var number = ''
+						plus.storage.setItem("type", this.id);
+						var url = "deposit.html"
+						if (this.id == "Foreign_Exchange") {
+							url = "fxdetail.html"
+							number = fxaccount
+						} else if (this.id == "Mutual_Fund") {
+							url = "mutualfunddetail.html"
+							number = mutualfundaccount
+						} else if (this.id == "Precious_Metal") {
+							return false
+						} else if (this.id == "Stock") {
+							url = "stock.html"
+							number = stockaccount
+						}
+						mui.openWindow({
+							url: url,
+							id: url,
+							show: {
+								aniShow: 'pop-in',
+								duration: 500
+							},
+							extras: { //extras里面的就是参数了
+								number: number
+							},
+							waiting: {
+								autoShow: true, //自动显示等待框，默认为true
+								title: 'Loading...'
+							}
+						});
+					}
+				})
+			}
+
+			if (window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}
+			function openDetail(){
+			    mui.openWindow({
+				url    : 'loan_detail.html',
+				extras :
+				{}
+			    });
+			}
+			function openMore(){
+			    mui.openWindow({
+				url    : 'invest_show.html',
+				extras :
+				{}
+			    });
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Open Banking</title>
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" />
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<link href="css/css.css" rel="stylesheet" />
+		<style>
+			.mui-popup-text{
+				text-align: left;
+			}
+		</style>
+	</head>
+	<body style="background-color: #efeff4;">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">Withdraw</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-card" style="padding: 20px;">
+				<form class="form-horizontal">
+					<!-- 
+					<div class="form-group">
+						<label for="debitAccountNumberlist" class="col-sm-6 control-label deposit-label">Debit Account: </label>
+						<div class="col-sm-6 deposit-input">
+							<span class="form-control" id="debitAccountNumberlist">--</span>
+						</div>
+					</div>	
+					-->
+					<div class="form-group">
+						<label for="tdAccountNumberlist" class="col-sm-6 control-label deposit-label" style="font-size: 15px;"> Account: </label>
+						<div class="col-sm-6 deposit-input">
+							<input class="form-control" id="tdAccountNumberlist" required="true" placeholder="Please input account number">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="tdAmount" class="col-sm-6 control-label deposit-label" style="font-size: 15px;">Withdraw Amount: </label>
+						<div class="col-sm-6 deposit-input">
+							<input type="text" class="form-control" id="tdAmount"  required="true" placeholder="Please input withdraw amount">
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="tdCcy" class="col-sm-6 control-label deposit-label" style="font-size: 15px;">Withdraw Currency: </label>
+						<div class="col-sm-6 deposit-input">
+							<span class="form-control" id="tdCcy">HKD</span>
+						</div>
+					</div>
+					
+					<!-- 
+					<div class="form-group">
+						<label for="entryDate" class="control-label">Entry Date: </label>
+						<div id="entryDate" style="padding: 5px 10px;" class="search-input">--</div>
+					</div>
+					-->
+					<div class="form-group">
+						<!--
+						<div class="col-sm-offset-4 col-sm-8 mui-text-center deposit-btn">
+							<button id="deposit" class="btn btn-primary">Deposit</button>
+						</div>
+						-->
+						<div class="col-sm-offset-4 col-sm-8 mui-text-center search-btn">
+							<button id="submit" class="btn btn-primary" style="font-size: 20px;margin: 10px;">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="mui-content">
+			<div class="mui-card hidden" id="response_area" style="padding: 20px;">
+				<ul class="mui-table-view" id="response"></ul>
+			</div>
+		</div>
+		<script src="./js/mui.min.js"></script>
+		<script src="./js/main.js"></script>
+		<script src="./js/mui.picker.js"></script>
+		<script src="./js/mui.poppicker.js"></script>
+		<script src="./js/moment.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true
+			});
+			var ws = null;
+			var token = null;
+			var mask=mui.createMask();
+			var account0=localStorage.getItem("account");
+			tdAccountNumberlist.value = account0;
+		
+			var account = window.location.href.split('id=')[1]
+			// H5 plus事件处理
+			function plusReady() {
+				ws = plus.webview.currentWebview();
+				ws.setStyle({
+					'popGesture': 'close'
+				});
+		
+				//Token check
+				token = plus.storage.getItem("token");
+				if (!token) {
+		// 			mui.alert("Invalid login information, please try again after login.", "Error", "OK", function() {
+		// 				mui.openWindow({
+		// 					url: "login.html",
+		// 					id: "login.html",
+		// 					show: {
+		// 						aniShow: 'pop-in',
+		// 						duration: 500
+		// 					},
+		// 					extras: { //extras里面的就是参数了
+		
+		// 					},
+		// 					waiting: {
+		// 						autoShow: true, //自动显示等待框，默认为true
+		// 						title: 'Loading...'
+		// 					}
+		// 				});
+		// 			})
+				} else {
+					initpicker();
+					// getSystemDate();
+					window.document.getElementById("deposit").addEventListener("click", function(e) {
+						e.preventDefault();
+						e.stopPropagation();
+		
+						var requestdata = getparams();
+						console.log(JSON.stringify(requestdata))
+						if (!requestdata) return false;
+						deposit(requestdata);
+					});
+				}
+			}
+		
+			if (window.plus) {
+				plusReady();
+			} else {
+				document.addEventListener('plusready', plusReady, false);
+			}
+		
+			/**
+			 * Get form data
+			 */
+			function getparams() {
+				var debitAccountNumber = document.getElementById("debitAccountNumberlist").innerHTML.trim(),
+					tdAccountNumber = document.getElementById("tdAccountNumberlist").innerHTML.trim(),
+					tdAmount = document.getElementById("tdAmount").value.trim(),
+					tdCcy = document.getElementById("tdCcy").innerHTML.trim(),
+					tdContractPeriod = document.getElementById("tdContractPeriod").innerHTML.trim();
+		
+				if (!debitAccountNumber || debitAccountNumber.length == 0) {
+					mui.alert("Please enter the Debit Account Number.", "Warning", "OK");
+					return false;
+				}
+				if (!tdAccountNumber || tdAccountNumber.length == 0) {
+					mui.alert("Please enter the TD Account Number.");
+					return false;
+				}
+				if (!tdAmount || tdAmount.length == 0 || !(typeof(Number(tdAmount)) && !isNaN(tdAmount)) || Number(tdAmount) < 10000) {
+					mui.alert("Please enter the TD Amount, at least 10000.", "Warning", "OK");
+					return false;
+				}
+				if (!tdCcy || tdCcy.length == 0) {
+					mui.alert("Please enter the TD Ccy.", "Warning", "OK");
+					return false;
+				}
+				if (!tdContractPeriod || tdContractPeriod.length == 0) {
+					mui.alert("Please enter the TD Contract Period.", "Warning", "OK");
+					return false;
+				}
+		
+				return {
+					"debitAccountNumber": debitAccountNumber,
+					"tdAccountNumber": tdAccountNumber,
+					"tdAmount": tdAmount,
+					"tdCcy": tdCcy,
+					"tdContractPeriod": tdContractPeriod
+				}
+			}
+			
+			function getSystemDate(){
+				var requesttimedata = {
+					"item": "Systemdate"
+				}
+				console.log("requesttimedata: "+JSON.stringify(requesttimedata))
+				console.log(host)
+				mui.ajax(host + "/sysadmin-experience/sysadmin/systemParameterRetrieval",{
+					data:requesttimedata,
+					dataType:'json',//服务器返回json格式数据
+					type:'post',//HTTP请求类型
+					timeout:60000,
+					headers:{
+						'accept':'*/*',
+						'token': token,
+						'Content-Type':'application/json'
+						},
+					beforeSend: function() {
+						plus.nativeUI.showWaiting("Loading…", "div");
+						mask.show();
+					},
+					complete: function() {
+						plus.nativeUI.closeWaiting();
+						mask.close();
+					},
+					success:function(data){
+						console.log("Systemdate data: "+JSON.stringify(data))
+						document.querySelector("#entryDate").innerHTML = moment.parseZone(Number(data.data[0].value)).local().format('YYYY-MM-DD');
+						console.log("Systemdate data: "+JSON.stringify(data))
+					},
+					error:function(xhr,type,errorThrown){
+						console.log(type);
+						var msg = "Get Entry Date failed! The response is: \n" + xhr.responseText + "."
+						if(type == "timeout"){
+							msg = "Get Entry Date failed. Time out!"
+						}
+						mui.alert(msg, "Error", "OK")
+					}
+				});
+			}
+		
+			/**
+			 * Term Deposit
+			 */
+			function deposit(requestdata) {
+				mui.ajax(host + "/deposit-experience/termDeposit/application",{
+					data:requestdata,
+					dataType:'json',//服务器返回json格式数据
+					type:'post',//HTTP请求类型
+					timeout:60000,
+					headers:{
+						'accept':'*/*',
+						'token':token,
+						'clientid':clientid,
+						'messageid':messageid,
+						'Content-Type':'application/json'
+						},
+					beforeSend: function() {
+						plus.nativeUI.showWaiting("Loading…", "div");
+						mask.show();
+					},
+					complete: function() {
+						plus.nativeUI.closeWaiting();
+						mask.close();
+					},
+					success:function(data){
+						if (data.code == "200") {
+							var requesttimedata = {
+								"item": "Systemdate"
+							}
+							mui.ajax(host + "/sysadmin-experience/sysadmin/systemParameterRetrieval",{
+								data:requesttimedata,
+								dataType:'json',//服务器返回json格式数据
+								type:'post',//HTTP请求类型
+								timeout:60000,
+								headers:{
+									'accept':'*/*',
+									'Content-Type':'application/json',
+									'token': token,
+									},
+								beforeSend: function() {
+									plus.nativeUI.showWaiting("Loading…", "div");
+									mask.show();
+								},
+								complete: function() {
+									plus.nativeUI.closeWaiting();
+									mask.close();
+								},
+								success:function(data1){
+									data.msg = data.msg.replace("TDNumber", "\nTDNumber").replace("Account", "\nAccount")
+		
+									data.msg += "\nTransaction Time:" + moment.parseZone(new Date().getTime()).local().format('YYYY-MM-DD HH:mm:ss') +
+										"\nEntry Date:" + moment.parseZone(Number(data1.data[0].value)).local().format('YYYY-MM-DD')
+		
+									var response = data.data;
+									plus.storage.setItem("TDNumber", data.data)
+									// mui.alert(handlermsg(data.msg), "Success", "OK")
+									mui.alert('Transaction Accepted.', "Success", "OK", function(){
+										mui.back()
+									})
+								},
+								error:function(xhr,type,errorThrown){
+									console.log(type);
+									var msg = "Get System Date failed! The response is: \n" + xhr.responseText + "."
+									if(type == "timeout"){
+										msg = "Get System Date failed. Time out!"
+									}
+									mui.alert(msg, "Error", "OK")
+								}
+							});
+						} else {
+							mui.alert("Term Deposit failed! The response is: \n" + JSON.stringify(data) + ".", "Error", "OK")
+						}
+					},
+					error:function(xhr,type,errorThrown){
+						console.log(type);
+						var msg = "Term Deposit failed! The response is: \n" + xhr.responseText + "."
+						if(type == "timeout"){
+							msg = "Term Deposit failed. Time out!"
+						}
+						mui.alert(msg, "Error", "OK")
+					}
+				});
+			}
+		
+			//对输入金额进行校验
+			function clearNoNum(obj) {
+				obj.value = obj.value.replace(/[^\d.]/g, ""); //清除"数字"和"."以外的字符
+				obj.value = obj.value.replace(/^\./g, ""); //验证第一个字符是数字而不是字符          
+				obj.value = obj.value.replace(/\.{2,}/g, "."); //只保留第一个.清除多余的       
+				obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+				obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); //只能输入两个小数
+			}
+		
+			/** 
+			 * handlermsg
+			 */
+			function handlermsg(msg) {
+				var array = msg.split("\n")
+				return '<p style="text-align:center">' + array[0] + '</p>' +
+					'<p>' + array[1] + '</p>' +
+					'<p>' + array[2] + '</p>' +
+					'<p>' + array[3] + '</p>' +
+					'<p>' + array[4] + '</p>'
+			}
+			
+			function initpicker(){
+				//currency type
+				var userPicker = new mui.PopPicker();
+				userPicker.setData([{
+					value: 'HKD',
+					text: 'HKD'
+				}]);
+				var showUserPickerButton = document.getElementById('tdCcy');
+				var userResult = document.getElementById('tdCcy');
+				userPicker.pickers[0].setSelectedValue(userResult.innerHTML, 2000);
+				showUserPickerButton.addEventListener('tap', function(event) {
+					userPicker.show(function(items) {
+						userResult.innerHTML = items[0].text;
+					});
+				}, false);
+		
+				//Period date
+				var PeriodPicker = new mui.PopPicker();
+				PeriodPicker.setData([{
+					value: '1day',
+					text: '1 Day'
+				}, {
+					value: '1week',
+					text: '1 Week'
+				}, {
+					value: '2weeks',
+					text: '2 Weeks'
+				}, {
+					value: '1month',
+					text: '1 Month'
+				}, {
+					value: '2months',
+					text: '2 Months'
+				}, {
+					value: '3months',
+					text: '3 Months'
+				}, {
+					value: '6months',
+					text: '6 Months'
+				}, {
+					value: '9months',
+					text: '9 Months'
+				}, {
+					value: '12months',
+					text: '12 Months'
+				}]);
+				var showPeriodPickerButton = document.getElementById('tdContractPeriod');
+				var PeriodResult = document.getElementById('tdContractPeriod');
+				PeriodPicker.pickers[0].setSelectedValue(PeriodResult.innerHTML, 2000);
+				showPeriodPickerButton.addEventListener('tap', function(event) {
+					PeriodPicker.show(function(items) {
+						PeriodResult.innerHTML = items[0].value;
+					});
+				}, false);
+		
+				var pickerdata = getsavingnumberpickerdata().concat(getcurrentnumberpickerdata());
+				
+				var debitAccountNumberpicker = new mui.PopPicker();
+				debitAccountNumberpicker.setData(pickerdata);
+				var debitAccountNumberlist = document.getElementById('debitAccountNumberlist');
+				debitAccountNumberlist.innerHTML = pickerdata[0].value;
+				debitAccountNumberpicker.pickers[0].setSelectedIndex(0);
+				debitAccountNumberlist.addEventListener('tap', function(event) {
+					debitAccountNumberpicker.show(function(items) {
+						debitAccountNumberlist.innerHTML = items[0].value;
+					});
+				}, false);
+		
+		
+				var tdpickerdata = gettermdepositnumberpickerdata();
+				var tdAccountNumberpicker = new mui.PopPicker();
+				tdAccountNumberpicker.setData(tdpickerdata);
+		
+				var tdAccountNumberlist = document.getElementById('tdAccountNumberlist');
+				
+				if(!ws.number){
+					tdAccountNumberpicker.pickers[0].setSelectedIndex(0);
+					tdAccountNumberlist.innerHTML = tdpickerdata[0].value;
+				}else{
+					tdAccountNumberpicker.pickers[0].setSelectedValue(ws.number, 2000);
+					tdAccountNumberlist.innerHTML = ws.number;
+				}
+				tdAccountNumberlist.addEventListener('tap', function(event) {
+					tdAccountNumberpicker.show(function(items) {
+						tdAccountNumberlist.innerHTML = items[0].value;
+					});
+				}, false);
+			}
+		</script>
+<!- 我添加的内容！-> 
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script>
+			 $(document).ready(function () {
+			 	$("#submit").click(function(){
+					var account = $("#tdAccountNumberlist").val();
+					var account2 =  localStorage.getItem("account");
+					var username =  localStorage.getItem("username");
+					var amount= $("#tdAmount").val();
+					if (account != account2){alert("The account you input is not consistant with your username! Please check!")}
+else {
+					$.ajaxSetup({async : false});  
+					$.ajax({
+							type : 'post',
+							url:"http://47.103.196.168/py_x3/withdraw2",
+							timeout:5000,
+							data:JSON.stringify({"username":username, "amount":amount}),
+							success: function(data){
+							var data2=$.parseJSON(data); 
+							var data3=data2.result.split("@");
+							if (data3[0]=="Withdraw Successfully!")
+							{alert(data3[0]);
+							
+							window.location.href = "subpage-Home.html"
+							}
+							else{alert(data2.result);}
+							},
+							error: function(data){
+							alert(data);
+							alert("连接失败，请检查手机网络")
+							}
+
+						});
+				return false;
+}
+
+				});
+
+			 })
+	</script>
+<!- 我添加的内容！-> 
+	</body>
+</html>

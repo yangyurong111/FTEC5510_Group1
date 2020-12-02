@@ -1,0 +1,114 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "845830",
+      "name": "投资理财",
+      "font_class": "touzilicai",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "1107047",
+      "name": "主页",
+      "font_class": "zhuye",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "2507444",
+      "name": "主页",
+      "font_class": "zhuye1",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "3031242",
+      "name": "银行卡",
+      "font_class": "yinhangqia",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "3052485",
+      "name": "银行卡",
+      "font_class": "yinhangka",
+      "unicode": "e558",
+      "unicode_decimal": 58712
+    },
+    {
+      "icon_id": "3754410",
+      "name": "取钱icon",
+      "font_class": "quqianicon",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "3754462",
+      "name": "取钱",
+      "font_class": "quqian",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "5339853",
+      "name": "财产",
+      "font_class": "property",
+      "unicode": "e757",
+      "unicode_decimal": 59223
+    },
+    {
+      "icon_id": "5638432",
+      "name": "转账",
+      "font_class": "zhuanzhang",
+      "unicode": "e63e",
+      "unicode_decimal": 58942
+    },
+    {
+      "icon_id": "5677960",
+      "name": "我的",
+      "font_class": "wode",
+      "unicode": "e627",
+      "unicode_decimal": 58919
+    },
+    {
+      "icon_id": "9559045",
+      "name": "投资",
+      "font_class": "ziyuan",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "11121398",
+      "name": "主页",
+      "font_class": "zhuye2",
+      "unicode": "e62d",
+      "unicode_decimal": 58925
+    },
+    {
+      "icon_id": "11528841",
+      "name": "取钱 (1)",
+      "font_class": "quqian1",
+      "unicode": "e515",
+      "unicode_decimal": 58645
+    },
+    {
+      "icon_id": "12930759",
+      "name": "取钱",
+      "font_class": "quqian2",
+      "unicode": "e617",
+      "unicode_decimal": 58903
+    },
+    {
+      "icon_id": "15093637",
+      "name": "设 置 (1)",
+      "font_class": "shezhi1",
+      "unicode": "e666",
+      "unicode_decimal": 58982
+    }
+  ]
+}
